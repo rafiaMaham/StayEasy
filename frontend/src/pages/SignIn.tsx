@@ -52,7 +52,7 @@ const SignIn = () => {
             {...register("email", { required: "This field is required" })}
           />
           {errors.email && (
-            <span className="text-red-500 font-normal">
+            <span className="text-red-500 font-normal text-sm">
               {errors.email.message}
             </span>
           )}
@@ -86,7 +86,7 @@ const SignIn = () => {
           </button>
 
           <div className="text-sm mt-2">
-            Not Registered ?{" "}
+            Not Registered?{" "}
             <Link
               to="/register"
               className="underline text-blue-900 hover:text-blue-700"
