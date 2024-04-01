@@ -3,20 +3,19 @@ import { useEffect } from "react";
 type ToastProps = {
   message: string;
   type: "SUCCESS" | "ERROR";
-  onClose: ()=>void
+  onClose: () => void;
 };
 
 const Toast = ({ message, type, onClose }: ToastProps) => {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      onClose();
+    }, 3000);
 
-    useEffect(()=>{
-        const timer = setTimeout(()=>{
-            onClose();
-        }, 3000)
-
-        return ()=>{
-            clearTimeout(timer)
-        }
-    },[onClose])
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [onClose]);
 
   const styles =
     type === "SUCCESS"

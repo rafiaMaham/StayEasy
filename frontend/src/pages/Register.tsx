@@ -9,7 +9,7 @@ export type RegisterFormData = {
   lastName: string;
   email: string;
   password: string;
-  conformPassword: string;
+  confirmPassword: string;
 };
 
 const Register = () => {
@@ -25,7 +25,7 @@ const Register = () => {
 
   const mutation = useMutation(apiClient.register, {
     onSuccess: async () => {
-      showToast({ message: "Successfully Registered!", type: "SUCCESS" });
+      showToast({ message: "Successfully Registered", type: "SUCCESS" });
       await queryClient.invalidateQueries("validateToken");
       navigate("/");
     },
@@ -114,7 +114,7 @@ const Register = () => {
           <input
             type="password"
             className="border rounded w-full md:w-[500px]  py-1 px-2 font-normal mt-1"
-            {...register("conformPassword", {
+            {...register("confirmPassword", {
               minLength: {
                 value: 6,
                 message: "Password must be of atleast 6 characters",
@@ -128,9 +128,9 @@ const Register = () => {
               },
             })}
           />
-          {errors.conformPassword && (
+          {errors.confirmPassword && (
             <span className="text-red-500 font-normal text-sm">
-              {errors.conformPassword.message}
+              {errors.confirmPassword.message}
             </span>
           )}
         </label>

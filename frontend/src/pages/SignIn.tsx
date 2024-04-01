@@ -24,7 +24,7 @@ const SignIn = () => {
     onSuccess: async () => {
       // console.log("user is signed in");
 
-      showToast({ message: "Sign in successful", type: "SUCCESS" });
+      showToast({ message: "Sign in Successful", type: "SUCCESS" });
       await queryClient.invalidateQueries("validateToken");
       navigate("/");
     },
