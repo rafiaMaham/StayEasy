@@ -15,7 +15,7 @@ const GuestsSection = () => {
       </h2>
 
       <div className="flex justify-center items-center mt-4">
-        <div className="grid grid-col-2 p-5 rounded-lg bg-gray-300 gap-5 lg:w-[50%] md:w-[70%]">
+        <div className="grid grid-col-2 p-5 rounded-lg bg-gray-300 gap-5 lg:w-[35%] md:w-[70%] w-[70%]">
           <label className="text-gray-700 text-sm font-semibold">
             Adults
             <input
@@ -26,9 +26,9 @@ const GuestsSection = () => {
                 required: "This field is required",
               })}
             />
-            {errors.adultCount?.message && (
-              <span className="text-red-500 text-sm font-bold">
-                {errors.adultCount?.message}
+            {errors.adultCount && (
+              <span className="text-red-500 font-normal text-sm">
+                {errors.adultCount.message}
               </span>
             )}
           </label>
@@ -43,9 +43,9 @@ const GuestsSection = () => {
                 required: "This field is required",
               })}
             />
-            {errors.childCount?.message && (
-              <span className="text-red-500 text-sm font-bold">
-                {errors.childCount?.message}
+            {errors.childCount && (
+              <span className="text-red-500 font-normal text-sm">
+                {errors.childCount.message}
               </span>
             )}
           </label>

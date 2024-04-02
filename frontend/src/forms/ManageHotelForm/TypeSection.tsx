@@ -18,9 +18,10 @@ const TypeSection = () => {
       </h2>
 
       <div className="flex justify-center items-center mt-4">
-        <div className="grid md:grid-cols-4 grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-3 grid-cols-2 gap-4">
           {hotelTypes.map((type) => (
             <label
+              key={type}
               className={
                 typeWatch === type
                   ? "cursor-pointer bg-purple-600 md:text-sm text-xs rounded-full md:px-3 md:py-1 px-2 py-1 font-semibold "
@@ -37,14 +38,13 @@ const TypeSection = () => {
               />
 
               <span>{type}</span>
-
-              {errors.type && (
-                <span className="text-red-500 text-sm font-bold">
-                  {errors.type.message}
-                </span>
-              )}
             </label>
           ))}
+        {errors.type && (
+          <span className="text-red-500 font-normal text-sm">
+            {errors.type.message}
+          </span>
+        )}
         </div>
       </div>
     </div>

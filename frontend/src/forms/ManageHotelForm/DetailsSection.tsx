@@ -16,7 +16,7 @@ const DetailsSection = () => {
         <label className="text-gray-700 text-sm md:text-lg font-bold flex-1 flex flex-col ">
           Name
           <input
-            type="name"
+            type="text"
             className="border rounded w-full md:w-[500px]  py-1 px-2 font-normal mt-1 "
             {...register("name", { required: "This field is required" })}
           />
@@ -26,6 +26,7 @@ const DetailsSection = () => {
             </span>
           )}
         </label>
+
         <label className="text-gray-700 text-sm md:text-lg font-bold flex-1 flex flex-col ">
           Country
           <input
@@ -91,7 +92,9 @@ const DetailsSection = () => {
               Select as rating
             </option>
             {[1, 2, 3, 4, 5].map((num) => (
-              <option value={num}>{num}</option>
+              <option value={num} key={num}>
+                {num}
+              </option>
             ))}
           </select>
           {errors.starRating && (
