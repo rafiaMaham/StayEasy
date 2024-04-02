@@ -7,11 +7,11 @@ export const hotelTypes = [
   "Family",
   "Romantic",
   "Hiking Resort",
-  "Cabin",
+ 
   "Beach Resort",
   "Golf Resort",
-  "Motel",
-  "All Inclusive",
+
+  
   "Pet Friendly",
   "Self Catering",
 ];

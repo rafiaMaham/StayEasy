@@ -3,7 +3,7 @@ import { hotelTypes } from "../../config/hotel-options-config";
 import { HotelFormData } from "./ManageHotelForm";
 
 const TypeSection = () => {
-  const { register, watch } = useFormContext<HotelFormData>();
+  const { register, watch, formState: {errors} } = useFormContext<HotelFormData>();
 
   const typeWatch = watch("type");
 
@@ -12,16 +12,15 @@ const TypeSection = () => {
       <h2 className="md:text-2xl font-bold flex justify-center items-center ">
         Type
       </h2>
-      
 
       <div className="flex justify-center items-center mt-4">
-        <div className="grid md:grid-cols-3 grid-cols-2 gap-2">
+        <div className="grid md:grid-cols-4 grid-cols-2 gap-4">
           {hotelTypes.map((type) => (
             <label
               className={
                 typeWatch === type
-                  ? "cursor-pointer bg-purple-600 text-sm rounded-full px-3 py-1 font-semibold "
-                  : "cursor-pointer bg-gray-300 text-sm rounded-full px-3 py-1 font-semibold "
+                  ? "cursor-pointer bg-purple-600 md:text-sm text-xs rounded-full md:px-3 md:py-1 px-2 py-1 font-semibold "
+                  : "cursor-pointer bg-gray-300 md:text-sm text-xs rounded-full md:px-3  md:py-1 px-2 py-1 font-semibold  "
               }
             >
               <input
@@ -38,6 +37,11 @@ const TypeSection = () => {
           ))}
         </div>
       </div>
+      {errors.type && (
+        <span className="text-red-500 text-sm font-bold">
+          {errors.type.message}
+        </span>
+      )}
     </div>
   );
 };
