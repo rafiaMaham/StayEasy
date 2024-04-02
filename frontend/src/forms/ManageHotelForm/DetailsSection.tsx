@@ -52,7 +52,7 @@ const DetailsSection = () => {
             </span>
           )}
         </label>
-        <label className="text-gray-700 text-sm md:text-lg font-bold flex-1 flex flex-col ">
+        <label className="text-gray-700 text-sm md:text-lg font-bold flex-1 flex flex-col md:mr-0 mr-5 ">
           Description
           <textarea
             rows={3}
@@ -70,7 +70,7 @@ const DetailsSection = () => {
           <input
             type="number"
             min={1}
-            className="border rounded w-full md:w-[500px]  py-1 px-2 font-normal mt-1 "
+            className="border rounded w-full md:w-[500px]  py-1 px-2 font-normal mt-1  "
             {...register("pricePerNight", {
               required: "This field is required",
             })}
@@ -84,7 +84,7 @@ const DetailsSection = () => {
         <label className="text-gray-700 text-sm md:text-lg font-bold flex-1 flex flex-col ">
           Rating
           <select
-            className="border rounded w-full md:w-[500px]  py-1 px-2 font-normal mt-1 "
+            className="border rounded w-full md:w-[500px]  py-1 px-2 font-normal mt-1 md:mr-0 mr-10"
             {...register("starRating", { required: "This field is required" })}
           >
             <option value="" className="text-sm ">
@@ -100,7 +100,6 @@ const DetailsSection = () => {
             </span>
           )}
         </label>
-        
       </div>
     </div>
   );
