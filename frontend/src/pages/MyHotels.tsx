@@ -22,7 +22,6 @@ const MyHotels = () => {
     return <span>No Hotels found</span>;
   }
 
- 
   return (
     <div className="space-y-5">
       <span className="flex justify-between">

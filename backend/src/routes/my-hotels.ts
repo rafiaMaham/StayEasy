@@ -82,18 +82,18 @@ router.get("/", verifyToken, async (req: Request, res: Response) => {
 
 //edit hotel
 //first get the id of the hotel
+// /api/my-hotels/7837538598
 router.get("/:id", verifyToken, async (req: Request, res: Response) => {
-  // /api/my-hotels/7837538598
   const id = req.params.id.toString();
 
   try {
-    const hotel = await Hotel.find({
+    const hotel = await Hotel.findOne({
       _id: id,
       userId: req.userId,
     });
     res.json(hotel);
   } catch (error) {
-    res.status(500).json({ message: "Error fetching hotel!" });
+    res.status(500).json({ message: "Error fetching hotels!" });
   }
 });
 
