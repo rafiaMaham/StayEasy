@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import * as apiClient from "../api-client";
 import { BsMap, BsBuilding } from "react-icons/bs";
 import { BiHotel, BiMoney, BiStar } from "react-icons/bi";
+// import { HotelType } from "../../../backend/src/shared/types";
 import { useAppContext } from "../contexts/AppContext";
 
 const MyHotels = () => {
@@ -20,6 +21,7 @@ const MyHotels = () => {
   if (!hotelData) {
     return <span>No Hotels found</span>;
   }
+
   return (
     <div className="space-y-5">
       <span className="flex justify-between">
