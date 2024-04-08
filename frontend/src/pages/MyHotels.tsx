@@ -43,7 +43,7 @@ const MyHotels = () => {
             <div className="grid md:grid-cols-5 gap-2">
               <div className="border border-slate-300 rounded-sm p-3 flex items-center">
                 <BsMap className="mr-1" />
-                {hotel.country}, {hotel.city}
+                {hotel.city}, {hotel.country}
               </div>
               <div className="border border-slate-300 rounded-sm p-3 flex items-center">
                 <BsBuilding className="mr-1" />
