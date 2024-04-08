@@ -70,7 +70,6 @@ router.post(
   }
 );
 
-
 //get hotels
 router.get("/", verifyToken, async (req: Request, res: Response) => {
   try {
@@ -78,6 +77,23 @@ router.get("/", verifyToken, async (req: Request, res: Response) => {
     res.json(hotels);
   } catch (error) {
     res.status(500).json({ message: "Error fetching hotels" });
+  }
+});
+
+//edit hotel
+//first get the id of the hotel
+router.get("/:id", verifyToken, async (req: Request, res: Response) => {
+  // /api/my-hotels/7837538598
+  const id = req.params.id.toString();
+
+  try {
+    const hotel = await Hotel.find({
+      _id: id,
+      userId: req.userId,
+    });
+    res.json(hotel);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching hotel!" });
   }
 });
 
