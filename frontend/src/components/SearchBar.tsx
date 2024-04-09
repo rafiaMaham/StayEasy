@@ -15,17 +15,18 @@ const SearchBar = () => {
   const [adultCount, setAdultCount] = useState<number>(search.adultCount);
   const [childCount, setChildCount] = useState<number>(search.childCount);
 
-  const handleSubmit = (event: FormEvent) => {
-    event.preventDefault();
-    search.saveSearchValues(
-      destination,
-      checkIn,
-      checkOut,
-      adultCount,
-      childCount
-    );
-    navigate("/search")
-  };
+ const handleSubmit = (event: FormEvent) => {
+   event.preventDefault();
+   search.saveSearchValues(
+     destination,
+     checkIn,
+     checkOut,
+     adultCount,
+     childCount
+   );
+   navigate("/search");
+ };
+
 
   const minDate = new Date();
   const maxDate = new Date();
