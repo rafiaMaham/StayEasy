@@ -1,7 +1,7 @@
 import { RegisterFormData } from "./pages/Register";
 import { SignInFormData } from "./pages/SignIn";
 
-import { HotelType } from "../../backend/src/shared/types";
+import { HotelSearchResponse, HotelType } from "../../backend/src/shared/types";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
@@ -96,9 +96,7 @@ export const fetchMyHotels = async (): Promise<HotelType[]> => {
 };
 
 //edit hotel
-export const fetchMyHotelById = async (
-  hotelId: string
-): Promise<HotelType> => {
+export const fetchMyHotelById = async (hotelId: string): Promise<HotelType> => {
   const response = await fetch(`${API_BASE_URL}/api/my-hotels/${hotelId}`, {
     credentials: "include",
   });
@@ -109,7 +107,6 @@ export const fetchMyHotelById = async (
 
   return response.json();
 };
-
 
 //update my hotel by id
 export const updateMyHotelById = async (hotelFormData: FormData) => {
@@ -127,4 +124,36 @@ export const updateMyHotelById = async (hotelFormData: FormData) => {
   }
 
   return response.json();
+};
+
+//all are in string bcs whenever we send query params, it has to be of type string
+
+export type SearchParams = {
+  destination?: string;
+  checkIn?: string;
+  checkOut?: string;
+  adultCount?: string;
+  childCount?: string;
+  page?: string;
+};
+
+export const searchHotels = async (searchParams: SearchParams): Promise<HotelSearchResponse> => {
+  const queryParams = new URLSearchParams();
+  queryParams.append("destination", searchParams.destination || "")
+  queryParams.append("checkIn", searchParams.checkIn || "")
+  queryParams.append("checkOut", searchParams.checkOut|| "")
+  queryParams.append("adultCount", searchParams.adultCount || "")
+  queryParams.append("childCount", searchParams.childCount || "")
+  queryParams.append("page", searchParams.page || "");
+
+
+  //make fetch request
+
+  const response = await fetch (`${API_BASE_URL}/api/hotels/search?${queryParams}`)
+
+  if(!response.ok){
+    throw new Error ("Error fetching hotels")
+  }
+
+  return response.json()
 };
