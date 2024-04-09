@@ -38,7 +38,7 @@ const GuestsSection = () => {
             <input
               className="border rounded-full w-full py-2 px-3 font-normal mt-1 "
               type="number"
-              min={1}
+              min={0}
               {...register("childCount", {
                 required: "This field is required",
               })}
