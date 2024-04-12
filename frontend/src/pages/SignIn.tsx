@@ -72,7 +72,7 @@ const SignIn = () => {
             })}
           />
           {errors.password && (
-            <span className="text-red-500 font-normal">
+            <span className="text-red-500 font-normal text-sm">
               {errors.password.message}
             </span>
           )}
