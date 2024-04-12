@@ -34,12 +34,7 @@ const SearchResultsCard = ({ hotel }: Props) => {
             {hotel.name}
           </Link>
 
-          <Link
-            to={`/detail/${hotel._id}`}
-            className="text-2xl font-bold cursor-pointer"
-          >
-            {hotel.name}
-          </Link>
+        
         </div>
         <div>
           <div className="line-clamp-4">{hotel.description}</div>
