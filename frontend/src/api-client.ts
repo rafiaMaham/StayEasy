@@ -5,6 +5,18 @@ import { HotelSearchResponse, HotelType } from "../../backend/src/shared/types";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
+//fetch current user function
+export const fetchCurrentUser = async () => {
+  const response = await fetch(`${API_BASE_URL}/api/users/me`, {
+    credentials: "include",
+  });
+  if (!response.ok) {
+    throw new Error("Error fetching user");
+  }
+
+  return response.json();
+};
+
 //register
 export const register = async (formData: RegisterFormData) => {
   const response = await fetch(`${API_BASE_URL}/api/users/register`, {
@@ -183,10 +195,6 @@ export const fetchHotelById = async (hotelId: string): Promise<HotelType> => {
 
   if (!response.ok) {
     throw new Error("Error fetching Hotels");
-
   }
   return response.json();
 };
-
-
-
