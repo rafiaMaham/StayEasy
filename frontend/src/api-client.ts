@@ -1,12 +1,12 @@
 import { RegisterFormData } from "./pages/Register";
 import { SignInFormData } from "./pages/SignIn";
 
-import { HotelSearchResponse, HotelType } from "../../backend/src/shared/types";
+import { HotelSearchResponse, HotelType, UserType } from "../../backend/src/shared/types";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
 //fetch current user function
-export const fetchCurrentUser = async () => {
+export const fetchCurrentUser = async (): Promise<UserType> => {
   const response = await fetch(`${API_BASE_URL}/api/users/me`, {
     credentials: "include",
   });
