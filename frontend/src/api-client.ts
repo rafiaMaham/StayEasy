@@ -201,7 +201,7 @@ export const fetchHotelById = async (hotelId: string): Promise<HotelType> => {
 };
 
 
-// payment intent functionality
+// payment intent endpoint/ functionality
 export const createPaymentIntent = async (
   hotelId: string,
   numberOfNights: string

@@ -33,24 +33,23 @@ const BookingForm = ({ currentUser, paymentIntent }: Props) => {
   const stripe = useStripe();
   const elements = useElements();
 
-    const search = useSearchContext();
-    const { hotelId } = useParams();
+  const search = useSearchContext();
+  const { hotelId } = useParams();
 
-    const { showToast } = useAppContext();
+  const { showToast } = useAppContext();
 
-    const { mutate: bookRoom, isLoading } = useMutation(
-      apiClient.createRoomBooking,
-      {
-        onSuccess: () => {
-          showToast({ message: "Booking Saved!", type: "SUCCESS" });
-        },
-        onError: () => {
-          showToast({ message: "Error saving booking", type: "ERROR" });
-        },
-      }
-    );
+  const { mutate: bookRoom, isLoading } = useMutation(
+    apiClient.createRoomBooking,
+    {
+      onSuccess: () => {
+        showToast({ message: "Booking Saved!", type: "SUCCESS" });
+      },
+      onError: () => {
+        showToast({ message: "Error saving booking", type: "ERROR" });
+      },
+    }
+  );
 
-  
   const { handleSubmit, register } = useForm<BookingFormData>({
     defaultValues: {
       firstName: currentUser.firstName,
@@ -78,15 +77,15 @@ const BookingForm = ({ currentUser, paymentIntent }: Props) => {
     });
 
     if (result.paymentIntent?.status === "succeeded") {
-      //book the room
-     bookRoom({ ...formData, paymentIntentId: result.paymentIntent.id });
+      //book room
+      bookRoom({ ...formData, paymentIntentId: result.paymentIntent.id });
     }
   };
 
   return (
     <form
-      className="grid grid-cols-1 gap-5 rounded-lg border border-slate-300 p-5"
       onSubmit={handleSubmit(onSubmit)}
+      className="grid grid-cols-1 gap-5 rounded-lg border border-slate-300 p-5"
     >
       <span className="text-3xl font-bold">Confirm Your Details</span>
       <div className="grid grid-cols-2 gap-6">
@@ -126,7 +125,7 @@ const BookingForm = ({ currentUser, paymentIntent }: Props) => {
 
       <div className="space-y-2">
         <h2 className="text-xl font-semibold">Your Price Summary</h2>
-        <div className="bg-blue-200 p-4 rounded-md">
+        <div className="bg-purple-200 p-4 rounded-md">
           <div className="font-semibold text-lg">
             Total Cost: ₹{paymentIntent.totalCost.toFixed(2)}
           </div>
@@ -141,6 +140,7 @@ const BookingForm = ({ currentUser, paymentIntent }: Props) => {
           className="border rounded-md p-2 text-sm"
         />
       </div>
+
       <div className="flex justify-end">
         <button
           disabled={isLoading}
