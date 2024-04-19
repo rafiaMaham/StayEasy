@@ -14,7 +14,6 @@ export const fetchCurrentUser = async (): Promise<UserType> => {
   if (!response.ok) {
     throw new Error("Error fetching user");
   }
-
   return response.json();
 };
 
