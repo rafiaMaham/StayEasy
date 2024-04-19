@@ -104,11 +104,13 @@ const SearchBar = () => {
         />
       </div>
 
-      <div className="flex gap-1">
-        <button className="w-full bg-blue-600 text-white h-full p-2 font-bold text-xl hover:bg-slate-500">
-          Search
-        </button>
-      </div>
+    
+        <div className="flex gap-1 md:items-center md:justify-center">
+          <button className="w-full bg-purple-300 text-purple-900 h-full p-2 font-bold text-xl hover:bg-purple-400 rounded-full ">
+            Search
+          </button>
+        </div>
+      
     </form>
   );
 };
