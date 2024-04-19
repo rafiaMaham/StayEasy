@@ -2,11 +2,11 @@ import { FormEvent, useState } from "react";
 import { useSearchContext } from "../contexts/SearchContext";
 import { MdTravelExplore } from "react-icons/md";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css"
+import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const search = useSearchContext();
 
   const [destination, setDestination] = useState<string>(search.destination);
@@ -15,24 +15,22 @@ const SearchBar = () => {
   const [adultCount, setAdultCount] = useState<number>(search.adultCount);
   const [childCount, setChildCount] = useState<number>(search.childCount);
 
- const handleSubmit = (event: FormEvent) => {
-   event.preventDefault();
-   search.saveSearchValues(
-     destination,
-     checkIn,
-     checkOut,
-     adultCount,
-     childCount
-   );
-   navigate("/search");
- };
-
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    search.saveSearchValues(
+      destination,
+      checkIn,
+      checkOut,
+      adultCount,
+      childCount
+    );
+    navigate("/search");
+  };
 
   const minDate = new Date();
   const maxDate = new Date();
 
-  maxDate.setFullYear(maxDate.getFullYear()+1)
-
+  maxDate.setFullYear(maxDate.getFullYear() + 1);
 
   return (
     <form
@@ -107,11 +105,8 @@ const SearchBar = () => {
       </div>
 
       <div className="flex gap-1">
-        <button className="w-2/3 bg-blue-600 text-white h-full p-2 font-bold text-xl hover:bg-slate-500">
+        <button className="w-full bg-blue-600 text-white h-full p-2 font-bold text-xl hover:bg-slate-500">
           Search
-        </button>
-        <button className="w-1/3 bg-red-600 text-white h-full p-2 font-bold text-xl hover:bg-red-500">
-         Clear
         </button>
       </div>
     </form>
